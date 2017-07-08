@@ -1,0 +1,25 @@
+{
+  "name": "autocompletegoogle",
+  "version": "1.0.0",
+  "description": "material UI autocomplete google place",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajay28kumar/GooglePlace-MUI-React.git"
+  },
+  "keywords": [
+    "ReactJS",
+    "googleplace",
+    "autocomplete",
+    "search"
+  ],
+  "author": "Ajay Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajay28kumar/GooglePlace-MUI-React/issues"
+  },
+  "homepage": "https://github.com/ajay28kumar/GooglePlace-MUI-React#readme"
+}
