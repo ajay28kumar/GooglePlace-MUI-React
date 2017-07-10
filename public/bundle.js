@@ -24498,7 +24498,8 @@ var App = function (_React$Component) {
             maxSearchResults: 5,
             results: this.getCoords,
             radius: 200000,
-            location: locationArea
+            location: locationArea,
+            hintText: "Start Searching places here"
           }),
           this.state.results ? _react2.default.createElement(
             'div',

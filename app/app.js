@@ -44,6 +44,7 @@ class App extends React.Component {
         	results={this.getCoords}
           radius = {200000}
           location={locationArea}
+          hintText = {"Start Searching places here"}
         />
 
         {this.state.results ?
