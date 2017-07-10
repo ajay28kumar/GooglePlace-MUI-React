@@ -24457,10 +24457,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
 
-  function App() {
+  function App(props) {
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this.state = {
+      results: null
+    };
+    _this.getCoords = _this.getCoords.bind(_this);
+    return _this;
   }
 
   _createClass(App, [{
@@ -24468,18 +24474,47 @@ var App = function (_React$Component) {
 
     // Results from clicking on location
     value: function getCoords(results) {
-      console.log(results);
+      // console.log(results);
+      this.setState({
+        results: results
+      });
     }
   }, {
     key: 'render',
     value: function render() {
+      console.log(this.state.results);
+
+      var locationArea = {
+        Lat: 20.593684,
+        Lng: 78.96288000000004
+      };
       return _react2.default.createElement(
         _materialUi.MuiThemeProvider,
         { muiTheme: (0, _getMuiTheme2.default)() },
-        _react2.default.createElement(_index2.default, {
-          maxSearchResults: 5,
-          results: this.getCoords
-        })
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_index2.default, {
+            maxSearchResults: 5,
+            results: this.getCoords,
+            radius: 200000,
+            location: locationArea
+          }),
+          this.state.results ? _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'h1',
+              { className: 'text-center' },
+              ' Result: '
+            ),
+            _react2.default.createElement(
+              'pre',
+              null,
+              JSON.stringify(this.state.results, null, 2)
+            )
+          ) : null
+        )
       );
     }
   }]);
@@ -63610,10 +63645,14 @@ var AutoCompletePlace = function (_Component) {
           searchText: searchText
         }, function () {
           var outerScope = _this2;
+          // console.log("biasing area : ", this.props.location);
+          var biasingArea = _this2.props.location ? new google.maps.LatLng(_this2.props.location.Lat, _this2.props.location.Lng) : new google.maps.LatLng(0, 0);
           _this2.service.getPlacePredictions({
             input: _this2.state.searchText,
             componentRestrictions: _this2.props.componentRestrictions,
-            types: _this2.props.types
+            types: _this2.props.types,
+            radius: _this2.props.radius || 20000000,
+            location: biasingArea
           }, function (predictions) {
             // console.log("predictions : ", predictions);
             // if (predictions) {

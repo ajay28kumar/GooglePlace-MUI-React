@@ -43,10 +43,14 @@ class AutoCompletePlace extends Component {
       },
       () => {
         const outerScope = this;
+        // console.log("biasing area : ", this.props.location);
+        const biasingArea = this.props.location ? new google.maps.LatLng(this.props.location.Lat , this.props.location.Lng) : new google.maps.LatLng(0,0);
         this.service.getPlacePredictions({
           input: this.state.searchText,
           componentRestrictions: this.props.componentRestrictions,
           types: this.props.types,
+          radius : this.props.radius || 20000000,
+          location: biasingArea,
         },
           (predictions) => {
             // console.log("predictions : ", predictions);

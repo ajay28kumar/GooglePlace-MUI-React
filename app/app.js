@@ -12,18 +12,54 @@ injectTapEventPlugin();
 
 
 class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      results : null
+    };
+    this.getCoords= this.getCoords.bind(this);
+  };
   // Results from clicking on location
   getCoords(results){
-    console.log(results);
+    // console.log(results);
+    this.setState({
+      results
+    })
   }
 
   render() {
+    console.log(this.state.results);
+
+    const locationArea = {
+      Lat : 20.593684,
+      Lng :78.96288000000004
+    }
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <div>
         <AutoCompletePlace
           maxSearchResults={5}
         	results={this.getCoords}
+          radius = {200000}
+          location={locationArea}
         />
+
+        {this.state.results ?
+            <div>
+              <h1 className="text-center"> Result: </h1>
+              <pre>{JSON.stringify(this.state.results, null, 2) }</pre>
+
+            </div>
+
+
+
+           :
+           null}
+           </div>
+
+
       </MuiThemeProvider>
     );
   }
