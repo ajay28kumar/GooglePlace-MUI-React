@@ -21,5 +21,21 @@
   "bugs": {
     "url": "https://github.com/ajay28kumar/GooglePlace-MUI-React/issues"
   },
-  "homepage": "https://github.com/ajay28kumar/GooglePlace-MUI-React#readme"
+  "homepage": "https://github.com/ajay28kumar/GooglePlace-MUI-React#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "react": "*",
+    "react-addons-test-utils": "*",
+    "react-dom": "*"
+  },
+  "devDependencies": {
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-preset-stage-0": "*",
+    "material-ui": "^0.18.6",
+    "material-ui-autocomplete-google-places": "^2.2.0",
+    "webpack": "*"
+  }
 }
